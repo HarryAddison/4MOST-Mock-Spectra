@@ -19,9 +19,9 @@ def calc_snr(spec, n_bins=60):
     '''
 
     # convert data to dimensionless quantities
-    wave = spec["WAVE"].value
-    signal = spec["FLUX"].value
-    noise = spec["ERR_FLUX"].value
+    wave = spec["wave"].value
+    signal = spec["flux"].value
+    noise = spec["flux_err"].value
 
     if n_bins != None:
         # rebin the data

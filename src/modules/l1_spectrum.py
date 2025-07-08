@@ -48,6 +48,10 @@ def _l1_spectrum(template_spec, params, save_path):
     dxu = L1DXU(observatory, tbl, params["t_exp"], with_noise=True)
 
     l1_spec = dxu.joined_spectrum()
+
+    l1_spec.rename_column("WAVE", "wave")
+    l1_spec.rename_column("FLUX", "flux")
+    l1_spec.rename_column("ERR_FLUX", "flux_err")
     l1_spec.write(save_path, format="fits", overwrite=True)
 
     return l1_spec

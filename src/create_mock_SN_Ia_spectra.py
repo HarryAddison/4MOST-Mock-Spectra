@@ -30,7 +30,7 @@ if __name__ == "__main__":
         template_spec = template_spectrum(params, template_path)
 
         l1_path = f"{config['l1_spec_dir']}/l1_spectrum_{params['id']}.fits"
-        spec, spec_no_noise, snr_values = l1_spectrum(template_spec, params, l1_path)
+        spec, snr_values = l1_spectrum(template_spec, params, l1_path)
 
         # add the SNR to the parameter grid
         param_grid["snr"][i] = snr_values[0]
