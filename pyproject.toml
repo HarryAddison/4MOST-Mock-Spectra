@@ -1,0 +1,28 @@
+[project]
+name = "4most-mock-spectra"
+dynamic = ["version"]
+license = {text = "BSD 3-Clause"}
+authors = [
+  {name = "Harry Addison", email = "ha00871@surrey.ac.uk"}]
+keywords = ["4MOST", "Spectra"]
+description = "4MOST SN mock spectra"
+readme = {file = "README.rst", content-type = "text/x-rst"}
+dependencies = ["astropy", "extinction", "matplotlib", "numpy", "PyYAML"]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-doctestplus"]
+doc = ["setuptools_scm", "sphinx", "sphinx-argparse", "sphinx-astropy"]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+namespaces = true
+
+[tool.setuptools_scm]
+write_to = "src/version.py"

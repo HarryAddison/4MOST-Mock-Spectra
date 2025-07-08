@@ -1,0 +1,37 @@
+# Save directories for template spectrum, photometry,
+# L1 joined spectrum, and the parameter grid.
+template_spec_dir: "root-dir/data/template-spectra"
+l1_spec_dir: "root-dir/data/l1-spectra"
+param_grid_path: "root-dir/data/spectrum_parameters.fits"
+
+#List of models to be used ["model_name", "version", "SN type"]
+salt_templates: [["salt2", "2.4", "Ia"],]
+
+# Tempalte parameters
+x1: [0]  # -3 to 3
+c: [0]  # -0.3 to 0.3
+
+t0: [0]  ## observer time corresponding to SN phase 0. (days)
+z: [0.001]
+
+
+amp_passband: [["lsstg","ab"]] # Absolute magnitudes of the SN types in the given passband.
+amp_max: -20.25
+amp_min: -18.25
+amp_num: 1  # Uses np.linspace to create range of amplitudes
+
+
+zenith: [0.1] #np.linspace(0, 55, 56) * u.deg # used to simulate airmass.
+seeing: [1.3] #np.linspace(0.6, 1.8, 4) * u.arcsec
+moon_brightness: ["dark"] #["dark", "gray", "bright"]
+t_exp: [40] # minutes
+
+# Sky position in celestial coordinates
+ra: [-90]  # deg
+dec: [-45]  # deg
+
+# Observer phases (relative to peak brightness) at which to produce spectra for.
+# Uses np.linspace
+phase_min: -20  # days
+phase_max: 60  # days
+phase_num: 1

@@ -1,0 +1,12 @@
+.git/
+
+# package building / other 
+__pycache__/
+.python-version
+build/
+version.py
+*.egg-info/
+
+# Data and figure folders
+*.pdf
+*.fits
