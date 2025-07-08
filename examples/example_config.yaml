@@ -11,18 +11,18 @@ salt_templates: [["salt2", "2.4", "Ia"],]
 x1: [0]  # -3 to 3
 c: [0]  # -0.3 to 0.3
 
-t0: [0]  ## observer time corresponding to SN phase 0. (days)
+t0: [0]  # observer time corresponding to SN phase 0. (days)
 z: [0.001]
 
 
 amp_passband: [["lsstg","ab"]] # Absolute magnitudes of the SN types in the given passband.
-amp_max: -20.25
-amp_min: -18.25
+amp_max: -20.25  # value typically > -20.25
+amp_min: -18.25  # value typically < -18.25
 amp_num: 1  # Uses np.linspace to create range of amplitudes
 
 
-zenith: [0.1] #np.linspace(0, 55, 56) * u.deg # used to simulate airmass.
-seeing: [1.3] #np.linspace(0.6, 1.8, 4) * u.arcsec
+zenith: [0.1]
+seeing: [1.3]
 moon_brightness: ["dark"] #["dark", "gray", "bright"]
 t_exp: [40] # minutes
 
@@ -33,5 +33,5 @@ dec: [-45]  # deg
 # Observer phases (relative to peak brightness) at which to produce spectra for.
 # Uses np.linspace
 phase_min: -20  # days
-phase_max: 60  # days
+phase_max: 60  # days 
 phase_num: 1
