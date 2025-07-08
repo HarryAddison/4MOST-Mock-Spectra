@@ -37,11 +37,17 @@ def _sn_model(params):
     # Set the parameters of the template spectrum
     for param in model.param_names:
         if param != "amplitude" and param != "x0":
-            model[param] = params[param]
+            # Try to remove the unit. If it does not have a unit it fails
+            # and just takes the value as is.
+            try:
+                param_value = params[param].value
+            except AttributeError:
+                 param_value = params[param]
+            model[param] = param_value
 
     # Set the absoulte amplitude of the model spectrum
     # Must be done after other params as SALT x1 and c alter it.
-    model.set_source_peakabsmag(params["amplitude"],
+    model.set_source_peakabsmag(params["amplitude"].value,
                                 params["amp_passband"],
                                 params["passband_system"])
 

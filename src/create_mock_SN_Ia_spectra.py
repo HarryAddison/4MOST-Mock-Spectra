@@ -4,6 +4,7 @@ from modules.extinction import get_mwebv
 from modules.template_spectrum import template_spectrum
 from modules.l1_spectrum import l1_spectrum
 import numpy as np
+import astropy.units as u
 
 
 if __name__ == "__main__":
@@ -13,11 +14,11 @@ if __name__ == "__main__":
     param_grid = create_sn_ia_param_grid(config)
 
     param_grid["id"] = np.arange(1, 1+ len(param_grid), 1)
-    param_grid["rest_phase"] = param_grid["observer_phase"] / (1 + param_grid["z"])
+    param_grid["rest_phase"] = param_grid["observer_phase"] / (1 + param_grid["z"]) * u.day
 
-    param_grid["mwebv"] = 0.0
+    param_grid["mwebv"] = 0.0 * u.mag
     for i, params in enumerate(param_grid):
-        param_grid["mwebv"][i] = get_mwebv(params["ra"], params["dec"])
+        param_grid["mwebv"][i] = get_mwebv(params["ra"], params["dec"]) * u.mag
 
     param_grid["snr"] = -1.0
     param_grid["snr_4500_8000"] = -1.0
