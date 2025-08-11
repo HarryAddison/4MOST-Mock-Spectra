@@ -1,0 +1,46 @@
+# Save directories for template spectrum, photometry,
+# L1 joined spectrum, and the parameter grid.
+gal_template_spec_dir: "../data/galaxy-templates/"
+template_spec_dir: "root-dir/data/template-spectra"
+l1_spec_dir: "root-dir/data/l1-spectra"
+param_grid_path: "root-dir/data/spectrum_parameters.fits"
+
+#List of models to be used ["model_name", "version", "SN type"]
+salt_templates: [["salt2", "2.4", "Ia"],]
+
+# Tempalte parameters
+x1: [0]  # -3 to 3
+c: [0]  # -0.3 to 0.3
+
+t0: [0]  ## observer time corresponding to SN phase 0. (days)
+z: [0.01]
+
+
+amp_passband: [["lsstg","ab"]] # Absolute magnitudes of the SN types in the given passband.
+amp_max: -20.25 # value typically > -20.25
+amp_min: -9.5 # value typically < -18.25
+amp_num: 20  # Uses np.linspace to create range of amplitudes
+
+
+zenith: [0.1]
+seeing: [0.9]
+moon_brightness: ["dark"] #["dark", "gray", "bright"]
+t_exp: [40] # minutes
+
+# Sky position in celestial coordinates
+ra: [-90]  # deg
+dec: [-45]  # deg
+
+# Observer phases (relative to peak brightness) at which to produce spectra for.
+# Uses np.linspace
+phase_min: 0  # days
+phase_max: 0  # days
+phase_num: 1
+
+# How bright is the galaxy compared to the SN?
+# 1 = same brightness
+# 0.1 = 10 times dimmer
+# 2 = 2 times brighter
+sn_gal_flux_ratio: 0.5
+
+host_type: "sb"
