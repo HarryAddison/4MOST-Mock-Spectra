@@ -1,10 +1,6 @@
 import argparse
 import textwrap
 import yaml
-import pandas as pd
-import numpy as np
-import astropy.units as u
-from astropy.table import QTable
 
 
 def parser():

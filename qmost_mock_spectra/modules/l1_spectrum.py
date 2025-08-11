@@ -1,11 +1,11 @@
 from qmostetc import Spectrum, QMostObservatory, L1DXU, Atmosphere
 import numpy as np
 import astropy.units as u
-from modules.snr import calc_snr
+from qmost_mock_spectra.modules.snr import calc_snr
 
 
-def l1_spectrum(template_spec, params, save_path):
-    spec = _l1_spectrum(template_spec, params, save_path)
+def l1_spectrum(template_spec, params, save_path, source_type="point"):
+    spec = _l1_spectrum(template_spec, params, save_path, source_type)
 
     snr, snr_4500_8000 = calc_snr(spec, n_bins=None)
     snr_per_15A, snr_4500_8000_per_15A = calc_snr(spec)
@@ -25,16 +25,17 @@ def _dummy_atmosphere():
                       moon_flux, airmasses, moon_sun_coeff)
 
 
-def _l1_spectrum(template_spec, params, save_path):
+def _l1_spectrum(template_spec, params, save_path=None, source_type='point'):
 
     '''
     From the given template spectrum produced the spectrum as if
     it were observed by 4MOST with the given parameters
     (i.e sky position, moon brightness, etc.).
     '''
-
+    print(template_spec)
     # put template spectrum into 4MOST ETC Spectrum object
     template_spec = Spectrum(template_spec["wave"], template_spec["flux"])
+    
 
     # Remove the atomosphere
     observatory = QMostObservatory('lrs')
@@ -43,7 +44,7 @@ def _l1_spectrum(template_spec, params, save_path):
         arm_observatory.atmosphere = observatory.atmosphere
 
     obs = observatory(params["zenith"], params["seeing"], params["moon_brightness"])
-    obs.set_target(template_spec, 'point')
+    obs.set_target(template_spec, source_type)
     tbl = obs.expose(params["t_exp"])
     dxu = L1DXU(observatory, tbl, params["t_exp"], with_noise=True)
 
@@ -52,7 +53,9 @@ def _l1_spectrum(template_spec, params, save_path):
     l1_spec.rename_column("WAVE", "wave")
     l1_spec.rename_column("FLUX", "flux")
     l1_spec.rename_column("ERR_FLUX", "flux_err")
-    l1_spec.write(save_path, format="fits", overwrite=True)
+    print(save_path)
+    if save_path != None:
+        print("saving L1 spectrum")
+        l1_spec.write(save_path, format="fits", overwrite=True)
 
     return l1_spec
-

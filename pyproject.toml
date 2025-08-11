@@ -1,5 +1,5 @@
 [project]
-name = "4most-mock-spectra"
+name = "qmost_mock_spectra"
 dynamic = ["version"]
 license = {text = "BSD 3-Clause"}
 authors = [
@@ -21,8 +21,8 @@ build-backend = "setuptools.build_meta"
 include-package-data = true
 
 [tool.setuptools.packages.find]
-include = ["src*"]
+include = ["qmost_mock_spectra*"]
 namespaces = true
 
 [tool.setuptools_scm]
-write_to = "src/version.py"
+write_to = "qmost_mock_spectra/version.py"

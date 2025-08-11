@@ -4,3 +4,9 @@ To use the code in this repository:
 - Copy and edit the config file in "examples/"
 - Create the directories where the data will be saved to.
 - From terminal run: python3 create_mock_SN_Ia_spectra.py -i {path to your config file}
+
+
+Data contains galaxy templates.
+Galaxy templates availabale:
+    - "e" == elliptical
+    - "s{x}" == s0, sa, sb, sc
