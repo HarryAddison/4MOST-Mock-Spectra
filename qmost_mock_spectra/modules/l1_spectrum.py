@@ -32,7 +32,6 @@ def _l1_spectrum(template_spec, params, save_path=None, source_type='point'):
     it were observed by 4MOST with the given parameters
     (i.e sky position, moon brightness, etc.).
     '''
-    print(template_spec)
     # put template spectrum into 4MOST ETC Spectrum object
     template_spec = Spectrum(template_spec["wave"], template_spec["flux"])
     
