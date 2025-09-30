@@ -4,6 +4,7 @@ To use the code in this repository:
 - Clone the respository
 - Go to the downloaded directory
 - $pip3 install .
+- Install the python version of 4MOST's ETC 
 - Copy and edit the config file in "examples/"
 - Create the directories where the data will be saved to.
 - From terminal run: python3 create_mock_SN_Ia_spectra.py -i {path to your config file}

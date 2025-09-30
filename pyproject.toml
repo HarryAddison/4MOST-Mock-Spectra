@@ -7,7 +7,7 @@ authors = [
 keywords = ["4MOST", "Spectra"]
 description = "4MOST SN mock spectra"
 readme = {file = "README.rst", content-type = "text/x-rst"}
-dependencies = ["astropy", "extinction", "matplotlib", "numpy", "PyYAML"]
+dependencies = ["astropy", "dustmaps", "extinction", "matplotlib", "numpy", "pandas", "PyYAML", "scikit-learn", "sncosmo"]
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-doctestplus"]
