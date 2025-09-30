@@ -1,8 +1,8 @@
-from modules.input_output import load_config
-from modules.parameter_grid import create_sn_ia_param_grid
-from modules.extinction import get_mwebv
-from modules.template_spectrum import template_spectrum
-from modules.l1_spectrum import l1_spectrum
+from qmost_mock_spectra import load_config
+from qmost_mock_spectra import create_sn_ia_param_grid
+from qmost_mock_spectra import get_mwebv
+from qmost_mock_spectra import template_spectrum
+from qmost_mock_spectra import l1_spectrum
 import numpy as np
 import astropy.units as u
 
